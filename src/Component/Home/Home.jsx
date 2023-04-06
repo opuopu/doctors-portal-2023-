@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from '../Banner'
 import InfoCard from '../infocard/InfoCard'
 import Service from '../service/Service'
+import Treatment from './Treatment'
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <Banner/>
         <InfoCard/>
         <Service/>
+        <Treatment/>
     </div>
   )
 }

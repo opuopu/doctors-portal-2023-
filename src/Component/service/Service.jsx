@@ -2,6 +2,7 @@ import React from 'react'
 import img2 from '../../assets/images/cavity.png'
 import img1 from '../../assets/images/fluoride.png'
 import img3 from '../../assets/images/whitening.png'
+import Singleservice from './Singleservice'
 export default function Service() {
     const serviceCard = [
         {
@@ -38,19 +39,11 @@ export default function Service() {
             <h5 className='text-primary1 text-lg font-bold'>Our Service</h5>
             <h1 className=' text-3xl my-3'>Services We Provide</h1>
          </div>
-         <div className='grid lg:grid-cols-3 gap-4'>
+         <div className='grid lg:grid-cols-3 grid-cols-1 gap-4'>
             {
                 serviceCard.map(service=>
-                    <div key={service?.id} className="card w-96  shadow-xl">
-  <figure className="px-10 pt-10">
-    <img src={service.img} alt="Shoes" className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">{service?.title}</h2>
-    <p>{service?.desc}</p>
- 
-  </div>
-</div>)
+                  <Singleservice service={service} key={service?.id}/>
+                   )
             }
          </div>
     </div>
