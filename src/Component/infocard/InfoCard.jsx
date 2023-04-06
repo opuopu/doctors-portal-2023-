@@ -39,7 +39,7 @@ export default function InfoCard() {
         {
             card?.map(c=> 
                 
-                <div className={`card card-side shadow-xl ${c?.color}`}>
+                <div key={c.id} className={`card card-side shadow-xl ${c?.color}`}>
   <figure><img src={c.img} alt="Movie"/></figure>
   <div className="card-body">
     <h2 className="card-title text-[#fff] font-bold">{c?.title}</h2>
