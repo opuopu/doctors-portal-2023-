@@ -1,8 +1,10 @@
 import React from 'react'
+
 import img from '../../assets/images/treatment.png'
 export default function Treatment() {
   return (
-    <div className="hero my-14">
+ <div>
+     <div className="hero my-14">
     <div className="hero-content flex-col lg:flex-row">
       <img src={img} className="lg:w-1/2 sm:w-full  rounded-lg shadow-2xl" />
       <div className=''>
@@ -11,6 +13,10 @@ export default function Treatment() {
         <button className="btn btn-primary bg-primary1 border-0">Get Started</button>
       </div>
     </div>
+
+    
   </div>
+
+ </div>
   )
 }
