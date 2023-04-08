@@ -1,5 +1,6 @@
 import React from 'react'
 import Banner from '../Banner'
+import ContactHome from '../contact/ContactHome'
 import InfoCard from '../infocard/InfoCard'
 import Service from '../service/Service'
 import Doctor from './Doctor'
@@ -13,6 +14,7 @@ export default function Home() {
         <Service/>
         <Treatment/>
         <Doctor/>
+        <ContactHome/>
     </div>
   )
 }

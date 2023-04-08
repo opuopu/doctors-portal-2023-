@@ -1,9 +1,11 @@
 import React from 'react'
+import appoitnment from '../../assets/images/appointment.png'
 import doctor from '../../assets/images/doctor.png'
-
 export default function Doctor() {
   return (
-<div className="hero  bg-base-200 rounded-lg mb-10">
+<div className="hero  bg-base-200 rounded-lg mb-10 " style={{
+    background: `url(${appoitnment})`
+}}>
   <div className="hero-content flex-col lg:flex-row">
     <img src={doctor} className="rounded-lg lg:w-1/2 " />
     <div>

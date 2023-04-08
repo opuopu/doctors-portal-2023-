@@ -8,7 +8,8 @@ export default {
     colors:{
       "primary1":"#0FCFEC",
       "secondary1":"#19D3AE",
-      "third":"#3A4256"
+      "third":"#3A4256",
+      "gr":"bg-gradient-to-r from-[#0FCFEC] to-[#19D3AE] "
     }
   },
   plugins: [require("daisyui")],
