@@ -19,7 +19,7 @@ export default function Footer() {
       <span className="footer-title text-[#000]">ORAL HEALTH</span> 
       <a className="link link-hover text-[#000]">Fluoride Treatment</a>
       <a className="link link-hover text-[#000]">Cavity Filling</a>
-      <a className="link link-hover text-[#000]">Teath Whitening</a>
+      <a className="link link-hover text-bold text-[#000]">Teath Whitening</a>
 
     </div> 
     <div>
