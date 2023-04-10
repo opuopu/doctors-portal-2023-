@@ -10,6 +10,14 @@ const slot = form.slot.value
 const name = form.fullName.value 
 const number = form.number.value 
 const email = form.email.value
+const booking ={
+    selectedDate:date, 
+    slot,
+    name,
+    number,
+    email
+}
+console.log(booking)
 }
  
 
