@@ -12,9 +12,10 @@ export default function ContactHome() {
         <input type="text" placeholder="email" className="input my-4 bg-[#fff] w-full " />
         <input type="text" placeholder="subject" className="input w-full bg-[#fff] " />
         <textarea className="textarea textarea-bordered bg-[#fff] my-4 h-40" placeholder="details"></textarea>
-        <button className="btn bg-primary1 btn-primary border-0">Get Started</button>
+        <button className="btn bg-primary1 btn-primary mb-6 border-0">Get Started</button>
 
         </form>
+        
     </div>
 </div>
   )
