@@ -1,3 +1,5 @@
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
+import { useEffect, useState } from 'react'
 import Initialization from "../config/Init"
 Initialization()
 const Usefirebase =()=>{
@@ -11,6 +13,13 @@ const createUserWithEmail =(email,password)=>{
 // LOGIN USER WITH EMAIL AND PASSWORD
 const LoginWithEmail =(email,password)=>{
  return signInWithEmailAndPassword(auth,email,password)
+}
+
+
+// update name: 
+
+const setName = (name)=>{
+   return   updateProfile(auth.currentUser,name)
 }
 
 
@@ -36,7 +45,7 @@ const signout  = ()=>{
 }
 
 
-    return {createUserWithEmail,user,LoginWithEmail,signout}
+    return {createUserWithEmail,user,LoginWithEmail,signout,setName}
 }
 
 export default Usefirebase

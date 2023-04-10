@@ -1,11 +1,53 @@
+
+import { getDatabase, ref, set } from "firebase/database";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import UseAuth from '../../context/useAuth';
+
+
 
 export default function Signup() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const {createUserWithEmail,setName} = UseAuth()
     const [data,setdata] = useState({})
-    const onSubmit = data => setdata(data);
+    const database = getDatabase();
+
+    const onSubmit = user => { 
+       
+        createUserWithEmail(user.email,user.password)
+        .then(result=>{
+            setdata(result.user)
+            const info = result.user
+       
+            updateuserName({
+                displayName:user?.name
+            })
+            set(ref(database,'users/'+info?.uid),{
+            
+              password:user?.password,
+              email:info?.email
+            })
+      
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
+
+    };
+
+const updateuserName =(displayName)=>{
+    setName(displayName)
+    .then(result=>{
+        // success
+    })
+    .catch(error=>{
+        console.log(error.message)
+    })
+}
+
+
+ 
   return (
     <div>
            <div className='flex justify-center'>
@@ -22,6 +64,7 @@ export default function Signup() {
   
   />
     {errors.name?.type === 'required' && <p className='text-start' role="alert">name is required</p>}
+  
 </div>
 
 
@@ -42,10 +85,11 @@ export default function Signup() {
   <label className="label">
     <span className="label-text">password</span>
   </label>
-  <input type="password"  {...register("password",{required:true})}  placeholder="password here" className="input input-bordered border-2 w-full bg-[#fff]" 
-     aria-invalid={errors.password ? "true" : "false"} 
+  <input type="password"  {...register("password",{required:true,minLength:{value:6,message:'password must be 6 char..'}})}  placeholder="password here" className="input input-bordered border-2 w-full bg-[#fff]" 
+   aria-invalid={errors.password ? "true" : "false"}
   />
-  {errors.password?.type === 'required' && <p className='text-start' role="alert">password is required</p>}
+   {errors.password?.type === 'required' && <p className='text-start' role="alert">password is required</p>}
+  {errors.password && <p className='text-start' role="alert">{errors.password.message}</p>}
   <label className="label mt-1">
     <span className="label-text">already signup? <Link to='/login'>Login Now</Link></span>
   </label>

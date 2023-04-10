@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase';
+import { initializeApp } from 'firebase/app';
+import firebaseConfig from './Config';
 
-import firebaseConfig from "./Config";
 
 const Initialization = () =>{
     return initializeApp(firebaseConfig)

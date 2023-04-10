@@ -8,6 +8,7 @@ const AuthProvider = ({children})=>{
 
     const firebase =Usefirebase()
 
+
    return(
   <authContext.Provider value={firebase}>
 {children}
