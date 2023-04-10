@@ -3,7 +3,7 @@ import { getDatabase, ref, set } from "firebase/database";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import UseAuth from '../../context/useAuth';
+import UseAuth from '../../context/UseAuth';
 
 
 
@@ -91,7 +91,7 @@ const updateuserName =(displayName)=>{
    {errors.password?.type === 'required' && <p className='text-start' role="alert">password is required</p>}
   {errors.password && <p className='text-start' role="alert">{errors.password.message}</p>}
   <label className="label mt-1">
-    <span className="label-text">already signup? <Link to='/login'>Login Now</Link></span>
+    <span className="label-text">already signup? <Link to='/login'>Signup Now</Link></span>
   </label>
 </div>
 

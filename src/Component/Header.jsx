@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import UseAuth from '../context/UseAuth'
 
 export default function Header() {
+  const {user,signout} = UseAuth()
+
   return (
     <div className="navbar bg-white-100">
     <div className="navbar-start">
@@ -26,11 +29,12 @@ export default function Header() {
           <li><Link to='/about'>About us</Link></li>
           <li><Link to='/review'>Review now</Link></li>
           <li><Link to='/contact'>Contact us</Link></li>
-          <li><Link to='/login'>Login</Link></li>
+         {user.uid ? '': <li><Link to='/login'>Login</Link></li>}
       </ul>
     </div>
-    <div className="navbar-end">
-      <a className="btn bg-secondary1 border-0 text-white-400">Get started</a>
+<div className="navbar-end">
+  {user?.uid &&  <p className='me-1'>{user?.displayName}</p>}
+  {  user?.uid && <button onClick={signout} className='btn btn-primary bg-red '>Logout</button>}
     </div>
   </div>
   )

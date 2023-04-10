@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import UseAuth from '../../context/UseAuth';
 
 export default function Login() {
+  const {LoginWithEmail} = UseAuth()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [data,setdata] = useState({})
+ const location = useLocation()
+ const navigate = useNavigate()
+ const from  =location?.state?.from?.pathname|| '/'
+// console.log(from)
 
-
-    const onSubmit = data => setdata(data);
+    const onSubmit = data =>{
+      LoginWithEmail(data.email,data.password)
+      .then(result=>{ 
+        const user = result.user
+        navigate(from,{replace:true})
+      })
+    .catch(error=>{
+      // error
+    })
+    };
   return (
     <div className='flex justify-center'>
            <div className=' mt-20 border border-2 px-6 py-20 w-96 text-center'>
