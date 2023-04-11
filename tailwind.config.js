@@ -2,7 +2,7 @@
 export default {
 
   content: [  "./index.html",
-  "./src/**/*.{js,jsx,ts,tsx}"],
+  "./src/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {},
     colors:{
@@ -12,6 +12,7 @@ export default {
       "gr":"bg-gradient-to-r from-[#0FCFEC] to-[#19D3AE] "
     }
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+  require('flowbite/plugin')],
 }
 

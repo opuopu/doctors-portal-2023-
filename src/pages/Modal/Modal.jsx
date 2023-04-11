@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import React from 'react';
 import UseAuth from '../../context/UseAuth';
 
-export default function Modal({treatment,date,notify,settreatment}) {
+export default function Modal({treatment,date,notify,settreatment,refetch}) {
   const {user} = UseAuth()
   
    const  {name,slots,_id} = treatment
@@ -16,6 +16,7 @@ const slot = form.slot.value
 const number = form.number.value 
 // const email = form.email.value
 const booking ={
+    treatment:name,
     selectedDate:date, 
     slot,
     name:user?.displayName,
@@ -34,9 +35,11 @@ fetch('http://localhost:5000/booking', {
     if(data.acknowledged){
       notify()
 settreatment(null)
+refetch()
     }
   })
   .catch(error => console.error(error));
+
 }
 
   return (
