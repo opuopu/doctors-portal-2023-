@@ -61,7 +61,7 @@ console.log({notify})
             }
            </div>
           {
-            treatment &&    <Modal treatment={treatment} refetch={refetch}  notify={notify} settreatment={settreatment} date={selected}/>
+            treatment &&    <Modal treatment={treatment} refetch={refetch} toast={toast}  notify={notify} settreatment={settreatment} date={selected}/>
           }
         </div>
          <ToastContainer/>

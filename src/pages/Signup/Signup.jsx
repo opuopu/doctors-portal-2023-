@@ -2,7 +2,7 @@
 import { getDatabase, ref, set } from "firebase/database";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UseAuth from '../../context/UseAuth';
 
 
@@ -12,7 +12,7 @@ export default function Signup() {
 const {createUserWithEmail,setName} = UseAuth()
     const [data,setdata] = useState({})
     const database = getDatabase();
-
+const navigate = useNavigate()
     const onSubmit = user => { 
        
         createUserWithEmail(user.email,user.password)
@@ -28,11 +28,13 @@ const {createUserWithEmail,setName} = UseAuth()
               password:user?.password,
               email:info?.email
             })
+
       
         })
         .catch(error=>{
             console.log(error.message)
         })
+        navigate('/')
 
     };
 
@@ -96,7 +98,7 @@ const updateuserName =(displayName)=>{
 </div>
 
       
-      <input type="submit"  value='Login Now' className='btn btn-primary bg-secondary1  border-0 mx-auto mt-4 w-full'/>
+      <input type="submit"  value='Signup Now' className='btn btn-primary bg-secondary1  border-0 mx-auto mt-4 w-full'/>
     </form>
     </div>
     </div>

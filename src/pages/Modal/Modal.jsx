@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import React from 'react';
 import UseAuth from '../../context/UseAuth';
 
-export default function Modal({treatment,date,notify,settreatment,refetch}) {
+export default function Modal({treatment,date,notify,settreatment,refetch,toast}) {
   const {user} = UseAuth()
   
    const  {name,slots,_id} = treatment
@@ -33,9 +33,13 @@ fetch('http://localhost:5000/booking', {
   .then(response => response.json())
   .then(data =>{
     if(data.acknowledged){
-      notify()
+   toast.success('treatment booked')
 settreatment(null)
 refetch()
+    }
+    else{
+      settreatment(null)
+      toast.error(data.message)
     }
   })
   .catch(error => console.error(error));
@@ -65,9 +69,7 @@ refetch()
   <input name='email' defaultValue={user?.email} readOnly type="email" placeholder="email" className="input input-bordered border-2 w-full mt-4 bg-[#fff]" />
 <input type="submit" value="submit" className='w-full mt-4 bg-[#000] py-2 rounded text-[#fff] font-bold' />
 </form>
-    <div className="modal-action">
-      <label htmlFor={`my-modal-${_id}`} onClick={notify}  className="btn">Yay!</label>
-    </div>
+    
   </div>
 </div>
     </>
