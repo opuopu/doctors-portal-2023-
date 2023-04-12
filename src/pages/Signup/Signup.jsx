@@ -22,19 +22,22 @@ const navigate = useNavigate()
        
             updateuserName({
                 displayName:user?.name
+      
             })
             set(ref(database,'users/'+info?.uid),{
             
               password:user?.password,
               email:info?.email
             })
-
-      
+                        
+            saveusertodatabase(user)
+    
+        
         })
         .catch(error=>{
             console.log(error.message)
         })
-        navigate('/')
+
 
     };
 
@@ -48,7 +51,23 @@ const updateuserName =(displayName)=>{
     })
 }
 
+const saveusertodatabase =(user) =>{
+ fetch(`http://localhost:5000/users`,{
+  method:'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(user)
 
+ }) 
+ .then(res=>
+  
+res.json()
+  )
+.then(data=>{
+  navigate('/')
+})
+}
  
   return (
     <div>

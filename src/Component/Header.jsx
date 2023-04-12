@@ -15,6 +15,7 @@ export default function Header() {
         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/Appointment'>Appointment</Link></li>
+          <li><Link to='/Dashboard'>Dashboard</Link></li>
           <li><Link to='/about'>About us</Link></li>
           <li><Link to='/review'>Review now</Link></li>
       
@@ -26,6 +27,7 @@ export default function Header() {
       <ul className="menu menu-horizontal px-1">
       <li><Link to='/'>Home</Link></li>
           <li><Link to='/Appointment'>Appointment</Link></li>
+          <li><Link to='/Dashboard'>Dashboard</Link></li>
           <li><Link to='/about'>About us</Link></li>
           <li><Link to='/review'>Review now</Link></li>
           <li><Link to='/contact'>Contact us</Link></li>
@@ -35,6 +37,7 @@ export default function Header() {
 <div className="navbar-end">
   {user?.uid &&  <p className='me-1'>{user?.displayName}</p>}
   {  user?.uid && <button onClick={signout} className='btn btn-primary bg-red '>Logout</button>}
+
     </div>
   </div>
   )
