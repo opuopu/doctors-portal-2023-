@@ -8,7 +8,12 @@ export default function MyAppointment() {
   const {data:myappointment=[],refetch,isLoading} =useQuery({
     queryKey:['myappointment',user?.email],
     queryFn:async()=>{
-      const res = await fetch(`http://localhost:5000/myappointment?email=${user?.email}`)
+      const url = `http://localhost:5000/myappointment?email=${user?.email}`
+      const res = await fetch(url,{
+         headers:{
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+         }
+      })
       const data = await res.json()
       return data
     }

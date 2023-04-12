@@ -5,18 +5,23 @@ import UseAuth from '../../context/UseAuth';
 
 export default function Login() {
   const {LoginWithEmail} = UseAuth()
+  const [useremail,setuseremail] = useState('')
+  // const {token} = verifyToken(useremail)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [data,setdata] = useState({})
  const location = useLocation()
  const navigate = useNavigate()
  const from  =location?.state?.from?.pathname|| '/'
 // console.log(from)
-
+          //  if(token){
+        
+          //  }
     const onSubmit = data =>{
       LoginWithEmail(data.email,data.password)
       .then(result=>{ 
         const user = result.user
-        navigate(from,{replace:true})
+    navigate(from,{replace:true})
+     
       })
     .catch(error=>{
       // error

@@ -65,10 +65,21 @@ const saveusertodatabase =(user) =>{
 res.json()
   )
 .then(data=>{
-  navigate('/')
+getuserToken(user?.email)
+
 })
 }
- 
+ const getuserToken = (email) =>{
+fetch(`http://localhost:5000/jwt?email=${email}`)
+.then(res=>res.json())
+.then(data=>{
+  if(data.accessToken){
+    localStorage.setItem('accessToken',data.accessToken)
+    navigate('/')
+  }
+})
+
+ }
   return (
     <div>
            <div className='flex justify-center'>
