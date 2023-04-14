@@ -20,13 +20,24 @@ export default function Login() {
       LoginWithEmail(data.email,data.password)
       .then(result=>{ 
         const user = result.user
-    navigate(from,{replace:true})
+           getuserTokens(data?.email)
+       
      
       })
     .catch(error=>{
       // error
     })
     };
+    const getuserTokens = (email) =>{
+      fetch(`http://localhost:5000/jwt?email=${email}`)
+      .then(res=>res.json())
+      .then(data=>{
+        if(data.accessToken){
+          localStorage.setItem('accessToken',data.accessToken)
+          navigate(from,{replace:true})
+        }
+      })
+    }
   return (
     <div className='flex justify-center'>
            <div className=' mt-20 border border-2 px-6 py-20 w-96 text-center'>

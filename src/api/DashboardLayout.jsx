@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Header from '../Component/Header'
+import UseAuth from '../context/UseAuth'
+import useAdmin from '../hooks/useAdmin'
 export default function DashboardLayout() {
+  const {user} = UseAuth()
+  const {isAdmin} = useAdmin(user?.email)
   return (
     <div>
         <Header></Header>
@@ -17,7 +21,7 @@ export default function DashboardLayout() {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
       {/* <!-- Sidebar content here --> */}
       <li><Link to='/Dashboard'>My Appointment</Link></li>
-      <li><a>Sidebar Item 2</a></li>
+     { isAdmin && <li><Link to='/Dashboard/allusers'>All Users</Link></li>}
     </ul>
   
   </div>

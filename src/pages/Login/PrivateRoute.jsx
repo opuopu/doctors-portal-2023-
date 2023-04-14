@@ -1,18 +1,15 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { RingLoader } from 'react-spinners';
 // RingLoader
 import UseAuth from '../../context/UseAuth';
+import Loading from '../Loading';
 
 
 export default function PrivateRoute({children}) {
     const location = useLocation()
     const {user,loading} = UseAuth()
     if(loading){
-         return <div className='flex justify-center mt-16 '><RingLoader
-         color="#19D3AE"
-         size={100}
-       /></div>
+         return <Loading></Loading>
 
 
     }
