@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Component/Home/Home";
+import AddDoctor from "../pages/Dashboard/Adddoctor/AddDoctor";
 import Allusers from "../pages/Dashboard/Allusers";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AdminRoute from "../pages/Login/AdminRoute";
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
         children:[
             {path:'/Dashboard',element:<Dashboard></Dashboard>},
             {path:'/Dashboard/allusers',element:<AdminRoute><Allusers/></AdminRoute>},
+            {path:'/Dashboard/adddoctor',element:<AdminRoute><AddDoctor/></AdminRoute>},
          
         ]
     }

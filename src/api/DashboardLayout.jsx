@@ -22,6 +22,7 @@ export default function DashboardLayout() {
       {/* <!-- Sidebar content here --> */}
       <li><Link to='/Dashboard'>My Appointment</Link></li>
      { isAdmin && <li><Link to='/Dashboard/allusers'>All Users</Link></li>}
+     { isAdmin && <li><Link to='/Dashboard/adddoctor'>Add Doctor</Link></li>}
     </ul>
   
   </div>
