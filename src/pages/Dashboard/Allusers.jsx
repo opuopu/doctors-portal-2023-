@@ -7,7 +7,11 @@ export default function Allusers() {
     const {data:allusers=[],refetch} =useQuery({
         queryKey:['users'],
         queryFn:async()=>{
-            const res = await fetch(`http://localhost:5000/users`)
+            const res = await fetch(`http://localhost:5000/users`,{
+              headers:{
+                authorization:`bearer ${localStorage.getItem('accessToken')}` 
+              }
+            })
             const data = res.json()
             return data
         }
@@ -16,7 +20,9 @@ export default function Allusers() {
     const handleadmin =id =>{
         fetch(`http://localhost:5000/users/admin/${id}`,{
             method:"PUT",
+          headers:{
             authorization:`bearer ${localStorage.getItem('accessToken')}`
+          }
         })
         .then(res=>res.json())
         .then(data=>{

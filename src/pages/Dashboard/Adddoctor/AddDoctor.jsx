@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function AddDoctor() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
 
  const apikey = '3d12a655c1f0274bd41469492d2a5e4c' 
   const {data:specialtys=[],refetch} =useQuery({
@@ -29,22 +30,57 @@ const onSubmit = (data) =>{
   }
   
   formData.append('image', img);
-  const url = `https://api.imgbb.com/1/upload?expiration=600&key=${apikey}`;
+  const url = `https://api.imgbb.com/1/upload?key=${apikey}`;
   fetch(url, {
     method: 'POST',
     body: formData,
   })
   .then(res => res.json())
   .then(imagedata => {
-    console.log(imagedata);
+if(imagedata.success){
+  const img  = imagedata.data.url
+  adddoctorToDatabase(data,img,reset)
+}
   })
   .catch(error => {
     console.error(error);
   })
 
 }
+
+const adddoctorToDatabase =(doctor,img,reset) =>{
+  const newdoctor ={
+    ...doctor,
+    img
+  }
+  fetch(`http://localhost:5000/adddoctor`,{
+    method:'POST',
+    headers: {
+      "Content-type": "application/json"
+    },
+    body:JSON.stringify(newdoctor)
+    
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data)
+    if(data.acknowledged){
+      toast.success('doctor added successfull')
+      reset()
+    }
+  })
+  .catch(error=>{
+    console.log(error.message)
+    if(error){
+      toast.error('something went wrong')
+    }
+  })
+}
   return (
+    <>
+  <ToastContainer/>
     <div>
+   
     <div className='flex justify-center'>
     <div className=' mt-20 border border-2 px-6 py-20 w-96 text-center'>
  <p className='font-bold ' >Add a Doctor </p>
@@ -107,7 +143,9 @@ aria-invalid={errors.email ? "true" : "false"}
 </form>
 </div>
 </div>
+
 </div>
+</>
   )
 }
 

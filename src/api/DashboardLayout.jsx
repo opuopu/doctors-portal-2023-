@@ -23,6 +23,7 @@ export default function DashboardLayout() {
       <li><Link to='/Dashboard'>My Appointment</Link></li>
      { isAdmin && <li><Link to='/Dashboard/allusers'>All Users</Link></li>}
      { isAdmin && <li><Link to='/Dashboard/adddoctor'>Add Doctor</Link></li>}
+     { isAdmin && <li><Link to='/Dashboard/managedoctor'>Manage Doctor</Link></li>}
     </ul>
   
   </div>
