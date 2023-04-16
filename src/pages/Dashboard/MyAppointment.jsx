@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import UseAuth from '../../context/UseAuth'
 import './cc.css'
 export default function MyAppointment() {
@@ -30,6 +31,8 @@ export default function MyAppointment() {
       
           <th className='ths'>Date</th>
           <th className='ths'>Time</th>
+          <th className='ths'>Fee</th>
+          <th className='ths'>Status</th>
 
         </tr>
       </thead>
@@ -43,6 +46,8 @@ export default function MyAppointment() {
       
           <td className='ths'>{mybook?.selectedDate}</td>
           <td className='ths'>{mybook?.slot}</td>
+          <td className='ths'>${mybook?.price}</td>
+          <td className='ths'>{mybook?.price && !mybook?.paid ?<Link to={`/dashboard/payment/${mybook?._id}`}> <button className='btn btn-secondary btn-sm'>Pay Now</button></Link>:'already paid'}</td>
         </tr>
           ))
         }

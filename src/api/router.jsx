@@ -4,6 +4,7 @@ import AddDoctor from "../pages/Dashboard/Adddoctor/AddDoctor";
 import Allusers from "../pages/Dashboard/Allusers";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import ManageDoctor from "../pages/Dashboard/ManageDoctor/ManageDoctor";
+import Payment from "../pages/Dashboard/payment/Payment";
 import AdminRoute from "../pages/Login/AdminRoute";
 import Login from "../pages/Login/Login";
 import PrivateRoute from "../pages/Login/PrivateRoute";
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {path:'/Dashboard/allusers',element:<AdminRoute><Allusers/></AdminRoute>},
             {path:'/Dashboard/adddoctor',element:<AdminRoute><AddDoctor/></AdminRoute>},
             {path:'/Dashboard/managedoctor',element:<AdminRoute><ManageDoctor/></AdminRoute>},
+            {path:'/Dashboard/payment/:id',element:<PrivateRoute><Payment/></PrivateRoute>,
+            loader:({params})=>fetch(`http://localhost:5000/payment/${params?.id}`)
+      
+        },
          
         ]
     }
