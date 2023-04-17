@@ -2,6 +2,8 @@
 
 1.install stripe 
 2.setup client side checkout.jsx
+3.setup confirm card 
+link:https://stripe.com/docs/js/payment_intents/confirm_card_payment
 -------------------------------------------------------server side------------------- 
 
 

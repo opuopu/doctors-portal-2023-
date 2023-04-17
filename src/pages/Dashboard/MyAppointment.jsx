@@ -47,7 +47,7 @@ export default function MyAppointment() {
           <td className='ths'>{mybook?.selectedDate}</td>
           <td className='ths'>{mybook?.slot}</td>
           <td className='ths'>${mybook?.price}</td>
-          <td className='ths'>{mybook?.price && !mybook?.paid ?<Link to={`/dashboard/payment/${mybook?._id}`}> <button className='btn btn-secondary btn-sm'>Pay Now</button></Link>:'already paid'}</td>
+          <td className='ths'>{mybook?.price && mybook?.paymentStatus !=='completed' ?<Link to={`/dashboard/payment/${mybook?._id}`}> <button className='btn btn-secondary btn-sm'>Pay Now</button></Link>:'already paid'}</td>
         </tr>
           ))
         }
